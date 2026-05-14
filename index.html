@@ -68,14 +68,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-links a{font-size:.8rem;color:var(--text2);text-decoration:none;padding:.35rem .8rem;border-radius:2rem;transition:all .2s;font-weight:500;letter-spacing:.01em}
 .nav-links a:hover,.nav-links a.active{color:var(--text);background:var(--bg3)}
 .nav-right{display:flex;align-items:center;gap:1rem}
-.mobile-menu-btn{
-display:none;
-background:none;
-border:none;
-color:var(--text);
-font-size:1.4rem;
-cursor:pointer;
-}
 .theme-toggle{width:40px;height:22px;background:var(--bg4);border-radius:11px;border:1px solid var(--border2);cursor:pointer;position:relative;transition:background .3s;flex-shrink:0;outline:none}
 .theme-toggle::after{content:'';position:absolute;width:16px;height:16px;border-radius:50%;background:var(--grad);top:2px;left:2px;transition:transform .3s}
 [data-theme="light"] .theme-toggle::after{transform:translateX(18px)}
@@ -378,34 +370,7 @@ footer .sub{font-size:.74rem;color:var(--text3);margin-top:.18rem}
 .skills-about{grid-template-columns:1fr}.tl-wrap::before{left:0}.tl-row{grid-template-columns:1fr}.tl-left{text-align:left;padding:1rem 0 0 1.5rem}.tl-dot{left:-7px;top:1.15rem}.tl-card{margin:.5rem 0 1.5rem}.proj-row{grid-template-columns:1fr}.proj-right{align-items:flex-start}.design-banner{grid-template-columns:1fr}.design-right{display:none}.resume-banner{grid-template-columns:1fr}.resume-icon{display:none}.career-banner{grid-template-columns:1fr}.career-arrow{display:none}
 }
 @media(max-width:768px){
-nav{padding:.85rem 1.2rem}..mobile-menu-btn{
-display:block;
-}
-
-.nav-links{
-position:absolute;
-top:100%;
-left:1rem;
-right:1rem;
-background:var(--bg2);
-border:1px solid var(--border2);
-border-radius:1rem;
-padding:1rem;
-display:flex;
-flex-direction:column;
-gap:.5rem;
-opacity:0;
-visibility:hidden;
-transform:translateY(-10px);
-transition:all .25s ease;
-}
-
-.nav-links.show{
-opacity:1;
-visibility:visible;
-transform:translateY(0);
-}<
-.hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;text-align:center}.hero-right{display:flex;justify-content:center;margin-top:1.5rem}.hero-img-box{width:220px;height:265px}.hero-btns{justify-content:center}.section{padding:4rem 1.5rem}.about-grid,.contact-wrap{grid-template-columns:1fr}footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}.resume-footer-strip{padding:1.2rem 1.5rem}.btn-nav-resume{display:none}
+nav{padding:.85rem 1.2rem}.nav-links{display:none}.hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;text-align:center}.hero-right{display:flex;justify-content:center;margin-top:1.5rem}.hero-img-box{width:220px;height:265px}.hero-btns{justify-content:center}.section{padding:4rem 1.5rem}.about-grid,.contact-wrap{grid-template-columns:1fr}footer{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem}.resume-footer-strip{padding:1.2rem 1.5rem}.btn-nav-resume{display:none}
 }
 </style>
 </head>
@@ -448,9 +413,7 @@ transform:translateY(0);
     <li><a href="#design">Design</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <button class="mobile-menu-btn" id="mobileMenuBtn">
-  ☰
-</button>
+  
   <div class="nav-right">
 <div class="resume-dropdown">
 
@@ -941,14 +904,6 @@ const sio = new IntersectionObserver(entries => {
   });
 }, { threshold: .4 });
 document.querySelectorAll('.stats-grid').forEach(el => sio.observe(el));
-</script>
-<script>
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.querySelector('.nav-links');
-
-mobileMenuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-});
 </script>
 </body>
 </html>
