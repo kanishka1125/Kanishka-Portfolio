@@ -939,7 +939,8 @@ let isSending = false;
 /* ── DEMO RESPONSES (used when no API key is set) ── */
 function getDemoResponse(q) {
   q = q.toLowerCase();
-
+if (/introduce|introduce kanishka|introduce her|who is kanishka|who's kanishka|tell me about kanishka|about kanishka/.test(q))
+return "Kanishka Sharma is a Chemical Engineering student with interests in data analytics, consulting, product thinking, and problem-solving. She combines structured analytical thinking with creativity and has worked on projects across engineering, analytics, UI/UX, and interactive web experiences. She is actively exploring opportunities where she can create meaningful impact through data, strategy, and innovation.";
   if (/\b(hi|hello|hey|sup|hiya)\b/.test(q))
     return "Hey! 👋 I'm Kanishka's portfolio assistant. Ask me about her skills, projects, internships, resumes, or anything career-related!";
 
