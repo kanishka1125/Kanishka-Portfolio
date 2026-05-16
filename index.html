@@ -842,16 +842,27 @@ nav{padding:.85rem 1.2rem}.nav-links{display:none}.mobile-menu-toggle{display:fl
   <div class="chat-messages" id="chat-messages">
     <div class="msg bot">
       <div class="msg-ava">✦</div>
-      <div class="msg-bubble">Hi! 👋 I'm Kanishka's AI assistant. Ask me anything about her resume, projects, skills, or experience!</div>
+      <div class="msg-bubble">Hi! 👋 I'm Kanishka's AI assistant. I can help you learn about her background, projects, skills, resumes, and career interests. Feel free to ask anything.</div>
     </div>
   </div>
 
-  <div class="chat-suggestions" id="chat-suggestions">
-    <button class="sug-btn" onclick="sendSuggestion(this)">What are your top skills?</button>
-    <button class="sug-btn" onclick="sendSuggestion(this)">Tell me about your projects</button>
-    <button class="sug-btn" onclick="sendSuggestion(this)">Which resume should I view?</button>
-    <button class="sug-btn" onclick="sendSuggestion(this)">Are you open to internships?</button>
-  </div>
+<div class="chat-suggestions" id="chat-suggestions">
+  <button class="sug-btn" onclick="sendSuggestion(this)">
+    Introduce Kanishka
+  </button>
+
+  <button class="sug-btn" onclick="sendSuggestion(this)">
+    Why should we hire Kanishka?
+  </button>
+
+  <button class="sug-btn" onclick="sendSuggestion(this)">
+    What projects has Kanishka worked on?
+  </button>
+
+  <button class="sug-btn" onclick="sendSuggestion(this)">
+    Share Kanishka's resumes
+  </button>
+</div>
 
   <div class="chat-input-row">
     <input type="text" id="chat-input" placeholder="Ask anything about Kanishka..." autocomplete="off">
@@ -935,6 +946,33 @@ function getDemoResponse(q) {
   if (/tell me about yourself|introduce yourself|who are you|who is kanishka/.test(q))
     return "Kanishka Sharma is a Chemical Engineering student at Thapar Institute (TIET), Patiala, with strong interests in data analytics, consulting, product strategy, and UI/UX design. She combines engineering-grade analytical thinking with creativity and business understanding.";
 
+  if (/why.*hire|hire you|why should we hire/.test(q))
+    return "Kanishka brings a strong combination of analytical thinking, problem-solving, and adaptability. Along with a Chemical Engineering background, she has hands-on experience in analytics, product thinking, UI/UX, and real-world projects. She learns quickly, approaches challenges in a structured way, and focuses on creating practical impact.";
+
+if (/stand out|different|unique|why you|special/.test(q))
+  return "Kanishka brings a unique combination of engineering problem-solving, analytical thinking, and product/design understanding. Her background allows her to think structurally while maintaining a business and user-focused mindset.";
+
+if (/transition|why.*it|why.*consulting|why.*product|career switch/.test(q))
+  return "While studying Chemical Engineering, Kanishka realized she was deeply drawn toward problem-solving, analytics, strategy, and building systems that create real impact. Working on analytics and product-related projects strengthened her interest in business and technology-focused roles.";
+
+if (/chemical engineering|background|problem solving/.test(q))
+  return "Chemical Engineering taught Kanishka to approach problems with logic, structure, and systems thinking. She focuses on understanding root causes, breaking problems into smaller parts, and building practical solutions backed by reasoning and data.";
+
+if (/approach|solve.*problem|build.*project/.test(q))
+  return "Kanishka starts by understanding the core objective and the real problem behind it. Then she breaks it into smaller parts, researches approaches, analyzes options, and focuses on practical and user-focused solutions.";
+
+if (/strength|top strength|biggest strength/.test(q))
+  return "Kanishka's strengths include analytical thinking, structured problem-solving, adaptability, communication, and balancing technical thinking with creativity.";
+
+if (/weakness|biggest weakness/.test(q))
+  return "Earlier, Kanishka used to spend too much time perfecting details. Over time she learned to balance quality with execution and prioritize effectively.";
+
+if (/leadership|team work|lead/.test(q))
+  return "Kanishka has experience leading UI/UX work, coordinating projects, and collaborating across teams while maintaining a balance between creativity and execution.";
+
+if (/internship|experience|work experience/.test(q))
+  return "Kanishka worked as a Lead UI/UX Designer Intern where she designed app experiences, built branding strategies, and worked on engagement growth initiatives.";
+
   if (/college|university|thapar|education|degree|studying/.test(q))
     return "She's pursuing B.Tech Chemical Engineering at Thapar Institute of Engineering & Technology, Patiala (2023–2027). Alongside core engineering, she independently built skills in Python, SQL, Power BI, and UI/UX design.";
 
@@ -977,11 +1015,46 @@ function getDemoResponse(q) {
   if (/goal|future|5 year|career|aspir/.test(q))
     return "Kanishka's near-term goal is to grow in Business Analytics, Consulting, or Product roles where she can combine data-driven thinking with strategic decision-making to solve meaningful business problems.";
 
-  if (/contact|email|linkedin|github|phone|reach/.test(q))
+// RESUME LINKS
+
+if (/consulting.*resume|consulting cv/.test(q))
+return "Consulting Resume: https://drive.google.com/file/d/1eoLpRpKcVfC1Pv898gObiOvK8yngwyo9/view";
+
+if (/data.*resume|data analyst.*resume|analytics.*resume/.test(q))
+return "Data Analyst Resume: https://drive.google.com/file/d/1BWXL17wEKGyKYGit08wCI2HC3RChCTwN/view";
+
+if (/product.*resume|product associate.*resume/.test(q))
+return "Product Associate Resume: https://drive.google.com/file/d/10VYs0nbxXZJzLbkCB9uNnd7EFokF5NkP/view";
+
+if (/chemical.*resume|chemical engineering.*resume/.test(q))
+return "Chemical Engineering Resume: https://drive.google.com/file/d/19VjN9A-PCeFPRE8hcbm3LJoa3T7QVelG/view";
+
+if (/resume|cv/.test(q))
+return "Kanishka has role-specific resumes available: Chemical Engineering, Data Analyst, Product Associate, and Consulting. Please specify which one you'd like.";
+
+// RESUME LINKS
+
+if (/consulting.*resume|consulting cv/.test(q))
+return "Consulting Resume: https://drive.google.com/file/d/1eoLpRpKcVfC1Pv898gObiOvK8yngwyo9/view";
+
+if (/data.*resume|data analyst.*resume|analytics.*resume/.test(q))
+return "Data Analyst Resume: https://drive.google.com/file/d/1BWXL17wEKGyKYGit08wCI2HC3RChCTwN/view";
+
+if (/product.*resume|product associate.*resume/.test(q))
+return "Product Associate Resume: https://drive.google.com/file/d/10VYs0nbxXZJzLbkCB9uNnd7EFokF5NkP/view";
+
+if (/chemical.*resume|chemical engineering.*resume/.test(q))
+return "Chemical Engineering Resume: https://drive.google.com/file/d/19VjN9A-PCeFPRE8hcbm3LJoa3T7QVelG/view";
+
+if (/resume|cv/.test(q))
+return "Kanishka has role-specific resumes available: Chemical Engineering, Data Analyst, Product Associate, and Consulting. Please specify which one you'd like.";
+
+
+if (/contact|email|linkedin|github|phone|reach/.test(q))
     return "Reach Kanishka at kanishkasharma139@gmail.com or +91-7404419727. She's also on LinkedIn (kanishka-sharma-0a39ab314) and GitHub (kanishka1125). Check the Contact section at the bottom of this page!";
 
-  if (/open|available|hire|opportun|freelanc|full.?time/.test(q))
-    return "Yes! Kanishka is actively open to internships, freelance projects, and full-time opportunities across Business Analytics, Data Analytics, Product Management, Consulting, and UI/UX roles.";
+if (/open|available|opportun|freelanc|full.?time/.test(q))
+   return "Yes! Kanishka is actively open to internships, freelance projects, and full-time opportunities across Business Analytics, Data Analytics, Product Management, Consulting, and UI/UX roles.";
 
   if (/stat|number|achievement|impact/.test(q))
     return "Key numbers: 7K+ customer records analyzed, 40% Instagram growth, 16+ Play Store app downloads, 1K+ students reached, 5–10% projected churn reduction from her telco analysis project.";
@@ -989,7 +1062,7 @@ function getDemoResponse(q) {
   if (/design|figma|adobe|ui.?ux|framer|portfolio/.test(q))
     return "Kanishka designs with Figma, Adobe Illustrator, Photoshop, and Framer. Her design portfolio (myportfolio1125.framer.website) showcases her app UI, brand identity work, and event creatives from Campus Connect.";
 
-  return "Great question! Feel free to ask me about Kanishka's skills, projects, internship experience, resumes, career goals, or how to get in touch. I know everything about her portfolio! 😊";
+return "I am not yet aware of that information. Feel free to connect with Kanishka directly for more details.\n\n📧 Email: kanishkasharma139@gmail.com\n🔗 LinkedIn: linkedin.com/in/kanishka-sharma-0a39ab314";
 }
 
 /* ── CHAT CORE ── */
