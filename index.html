@@ -1065,6 +1065,64 @@ if (/open|available|opportun|freelanc|full.?time/.test(q))
 return "I am not yet aware of that information. Feel free to connect with Kanishka directly for more details.\n\n📧 Email: kanishkasharma139@gmail.com\n🔗 LinkedIn: linkedin.com/in/kanishka-sharma-0a39ab314";
 }
 
+
+const suggestionSets = [
+
+[
+"Introduce Kanishka",
+"Why should we hire Kanishka?",
+"What projects has Kanishka worked on?",
+"Share Kanishka's resumes"
+],
+
+[
+"What are Kanishka's top skills?",
+"Tell me about Kanishka's internship experience",
+"What tools does Kanishka use?",
+"What roles is Kanishka looking for?"
+],
+
+[
+"How does Kanishka solve problems?",
+"What makes Kanishka different?",
+"What industries interest Kanishka?",
+"How can I contact Kanishka?"
+]
+
+];
+
+let currentSuggestionSet = 0;
+
+function updateSuggestions(){
+
+const container=document.getElementById('chat-suggestions');
+
+currentSuggestionSet=
+(currentSuggestionSet+1)%suggestionSets.length;
+
+container.innerHTML='';
+
+suggestionSets[currentSuggestionSet].forEach(q=>{
+
+const btn=document.createElement('button');
+
+btn.className='sug-btn';
+
+btn.innerText=q;
+
+btn.onclick=function(){
+sendSuggestion(this);
+};
+
+container.appendChild(btn);
+
+});
+
+container.style.display='flex';
+}
+
+
+
 /* ── CHAT CORE ── */
 function toggleChat() {
   chatOpen = !chatOpen;
@@ -1112,7 +1170,6 @@ async function sendMessage() {
   isSending = true;
   input.value = '';
   input.disabled = true;
-  document.getElementById('chat-suggestions').style.display = 'none';
   addMessage('user', text);
   chatHistory.push({ role: 'user', content: text });
   addTyping();
@@ -1120,15 +1177,18 @@ async function sendMessage() {
   /* ── Demo mode (no API key) ── */
   if (!ANTHROPIC_API_KEY) {
     setTimeout(() => {
-      removeTyping();
-      const resp = getDemoResponse(text);
-      addMessage('bot', resp);
-      chatHistory.push({ role: 'assistant', content: resp });
-      isSending = false;
-      input.disabled = false;
-      input.focus();
-    }, 700 + Math.random() * 500);
-    return;
+    removeTyping();
+    const resp = getDemoResponse(text);
+    addMessage('bot', resp);
+    chatHistory.push({ role: 'assistant', content: resp });
+
+    updateSuggestions();
+
+    isSending = false;
+    input.disabled = false;
+    input.focus();
+  }, 700 + Math.random() * 500);
+      return;
   }
 
   /* ── Real Claude API call ── */
